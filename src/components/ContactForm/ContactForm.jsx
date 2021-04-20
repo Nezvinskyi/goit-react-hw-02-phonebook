@@ -42,7 +42,7 @@ class ContactForm extends Component {
 					Number
 					<br/>
 					<input
-						type="text"
+						type="tel"
 						value={this.state.number}
 						name='number'
 						required

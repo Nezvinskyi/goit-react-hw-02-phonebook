@@ -1,13 +1,16 @@
+import ContactItem from '../ContactItem'
 import './ContactList.scss'
+
 
 const ContactList = ({ contacts }) => (
 	<ul>
-		{contacts.map(contact => (
-			<li key={contact.id}>
-				<span>{contact.name}: </span>
-				<span>{contact.number}</span>
-			</li>
-		))}
+		{contacts.map(contact => {
+			const {id, name, number} = contact
+			return (
+				<li key={id}>
+					<ContactItem name={name} number={ number }/>
+				</li>)
+		})}
 	</ul>
 )
  
