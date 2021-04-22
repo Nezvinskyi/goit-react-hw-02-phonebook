@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormControl, InputLabel, OutlinedInput, Button } from '@material-ui/core';
 import './ContactForm.scss'
 
 class ContactForm extends Component {
@@ -25,33 +26,43 @@ class ContactForm extends Component {
 	render() {
 
 		return (
-			<form onSubmit={this.handleSubmit }>
-				<label>
-					Name
-					<br/>
-					<input
+			<form onSubmit={this.handleSubmit}>
+				<FormControl variant="outlined">
+        	<InputLabel color='secondary' htmlFor="component-outlined-name">Name</InputLabel>
+					<OutlinedInput
 						type="text"
-						value={this.state.name}
+						id="component-outlined-name"
 						name='name'
-						required
+						color='secondary'
+						value={this.state.name}
 						onChange={this.handleChange}
+						inputProps={{pattern: "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$", title: "Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."}}
+						required
+						label="Name"
 					/>
-				</label>
+				</FormControl>
+	
 				<br/>
-				<label>
-					Number
-					<br/>
-					<input
-						type="tel"
-						value={this.state.number}
-						name='number'
-						required
-						onChange={this.handleChange}
-					/>
-				</label>
 				<br/>
 
-				<button type="submit">Add contact</button>
+				<FormControl variant="outlined">
+					<InputLabel color='secondary' htmlFor="component-outlined-number">Number</InputLabel>
+					<OutlinedInput
+						type="tel"
+						id="component-outlined-number"
+						name='number'
+						color='secondary'
+						value={this.state.number}
+						onChange={this.handleChange}
+						inputProps={{pattern: "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$", title: "Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"}}
+						required
+						label="Number" />
+				</FormControl>
+				<br/>
+				<br/>
+				<Button type="submit" variant="outlined" color="secondary">
+					Add contact
+				</Button>
 			</form>
 		 );
 	};
